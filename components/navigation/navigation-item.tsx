@@ -20,6 +20,8 @@ export default function NavigationItem({
   const router = useRouter();
 
   function handleClick() {
+    console.log("Server id -", id);
+
     router.push(`/servers/${id}`);
   }
 
@@ -28,7 +30,7 @@ export default function NavigationItem({
       <ActionToolTip side="right" align="center" label={name}>
         <button
           onClick={() => {
-            handleClick;
+            handleClick();
           }}
           className="group relative flex items-center"
         >
