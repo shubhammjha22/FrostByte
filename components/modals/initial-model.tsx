@@ -23,6 +23,7 @@ import {
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { FileUpload } from "../file-upload";
+import { useRouter } from "next/navigation";
 
 export default function InitialModal() {
   const formSchema = z.object({
@@ -40,9 +41,15 @@ export default function InitialModal() {
 
   const isLoading = form.formState.isSubmitting;
 
+  const router = useRouter();
+
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    console.log("Valu is ", values);
     try {
-      axios;
+      await axios.post("/api/servers", values);
+      form.reset();
+      router.refresh();
+      window.location.reload();
     } catch (error) {
       console.log("Error is -", error);
     }
