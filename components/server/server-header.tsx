@@ -9,6 +9,7 @@ import {
 } from "../ui/dropdown-menu";
 import {
   ChevronDown,
+  LogOut,
   PlusCircle,
   Settings,
   Trash,
@@ -64,6 +65,12 @@ export default function ServerHeader({ server, role }: ServerHeaderProps) {
             <DropdownMenuItem className="text-rose-500 py-2 px-3 text-sm cursor-pointer">
               Delete Server
               <Trash className="h-4 w-4 ml-auto" />
+            </DropdownMenuItem>
+          )}
+          {!isAdmin && (
+            <DropdownMenuItem className="text-rose-500 py-2 px-3 text-sm cursor-pointer">
+              Leave Server
+              <LogOut className="h-4 w-4 ml-auto" />
             </DropdownMenuItem>
           )}
         </DropdownMenuContent>
