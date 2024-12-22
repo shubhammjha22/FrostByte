@@ -20,5 +20,8 @@ export const useModal = create<ModalStoreProps>((set) => ({
   data: {},
   isOpen: false,
   onOpen: (type, data = {}) => set({ isOpen: true, type, data }),
-  onClose: () => set({ type: null, isOpen: false }),
+  onClose: () => {
+    console.log("modal closed");
+    set({ type: null, isOpen: false });
+  },
 }));
