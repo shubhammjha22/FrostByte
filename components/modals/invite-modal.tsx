@@ -54,7 +54,7 @@ export default function InviteModal() {
 
   function handleClose() {
     onClose();
-    window.location.reload(); //jugad for bug
+    console.log(isOpen);
   }
 
   return (
