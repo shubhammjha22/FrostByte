@@ -78,7 +78,14 @@ export default function ServerHeader({ server, role }: ServerHeaderProps) {
             </DropdownMenuItem>
           )}
           {isMod && (
-            <DropdownMenuItem className=" py-2 px-3 text-sm cursor-pointer">
+            <DropdownMenuItem
+              onClick={() => (
+                setDropdownOpen(false),
+                onOpen("createChannel"),
+                console.log("clicked"),
+              )}
+              className=" py-2 px-3 text-sm cursor-pointer"
+            >
               Create Channel
               <PlusCircle className="h-4 w-4 ml-auto" />
             </DropdownMenuItem>
