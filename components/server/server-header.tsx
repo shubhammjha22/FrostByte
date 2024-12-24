@@ -79,11 +79,7 @@ export default function ServerHeader({ server, role }: ServerHeaderProps) {
           )}
           {isMod && (
             <DropdownMenuItem
-              onClick={() => (
-                setDropdownOpen(false),
-                onOpen("createChannel"),
-                console.log("clicked"),
-              )}
+              onClick={() => (setDropdownOpen(false), onOpen("createChannel"))}
               className=" py-2 px-3 text-sm cursor-pointer"
             >
               Create Channel
@@ -92,16 +88,23 @@ export default function ServerHeader({ server, role }: ServerHeaderProps) {
           )}
           {isMod && <DropdownMenuSeparator />}
           {isAdmin && (
-            <DropdownMenuItem className="text-rose-500 py-2 px-3 text-sm cursor-pointer">
+            <DropdownMenuItem
+              onClick={() => (
+                setDropdownOpen(false), onOpen("deleteServer", { server })
+              )}
+              className="text-rose-500 py-2 px-3 text-sm cursor-pointer"
+            >
               Delete Server
               <Trash className="h-4 w-4 ml-auto" />
             </DropdownMenuItem>
           )}
           {!isAdmin && (
-            <DropdownMenuItem onClick={() => (
-              setDropdownOpen(false),
-              onOpen("leaveServer",{server}),
-            )} className="text-rose-500 py-2 px-3 text-sm cursor-pointer">
+            <DropdownMenuItem
+              onClick={() => (
+                setDropdownOpen(false), onOpen("leaveServer", { server })
+              )}
+              className="text-rose-500 py-2 px-3 text-sm cursor-pointer"
+            >
               Leave Server
               <LogOut className="h-4 w-4 ml-auto" />
             </DropdownMenuItem>
