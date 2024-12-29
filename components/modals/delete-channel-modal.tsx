@@ -15,7 +15,7 @@ import { Button } from "../ui/button";
 import { useState } from "react";
 import axios from "axios";
 import { NextResponse } from "next/server";
-import { useParams, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import queryString from "query-string";
 
 export default function DeleteChannelModal() {
@@ -25,8 +25,6 @@ export default function DeleteChannelModal() {
   const { server, channel } = data;
   const router = useRouter();
 
-  const params = useParams();
-
   const [isLoading, setIsLoading] = useState(false);
 
   const onConfirmLeave = async () => {
@@ -35,13 +33,15 @@ export default function DeleteChannelModal() {
       const url = queryString.stringifyUrl({
         url: `/api/channels/${channel?.id}`,
         query: {
-          serverId: params?.serverId,
+          serverId: server?.id,
         },
       });
       await axios.delete(url);
-      onClose();
       router.refresh();
-      router.push(`/servers/${params?.serverId}`);
+      window.location.reload(); //jugad
+      onClose();
+
+      router.push(`/servers/${server?.id}`);
     } catch (error) {
       console.log(error);
       return new NextResponse("Internal Server error", { status: 500 });
