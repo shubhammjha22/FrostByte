@@ -189,12 +189,7 @@ export default async function ServerSideBar({ serverId }: ServerSideBarProps) {
                 server={server}
               />
               {members.map((member) => (
-                <ServerMember
-                  key={member.id}
-                  // channel={channel}
-                  // role={member.role}
-                  // server={server}
-                />
+                <ServerMember key={member.id} member={member} server={server} />
               ))}
             </div>
           )}
